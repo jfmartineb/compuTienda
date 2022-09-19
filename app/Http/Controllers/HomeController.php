@@ -2,11 +2,18 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Http\Request;
+use App\Models\Product;
+
 class HomeController extends Controller
 {
     public function index()
     {
-        return view('home.index');
+        $viewData = [];
+        $viewData["title"] = "Products - Online Store";
+        $viewData["subtitle"] =  "List of products";
+        $viewData["products"] = Product::all();
+        return view('home.index')->with("viewData", $viewData);
     }
     
     public function about()

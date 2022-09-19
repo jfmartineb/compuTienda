@@ -20,10 +20,6 @@ class ProductController extends Controller
 
     public function show($id)
     {
-        if($id > 4)
-        {
-            return redirect()->route('home.index');
-        }
         $viewData = [];
         $product = Product::findOrFail($id);
         $viewData["title"] = $product["name"]." - Online Store";

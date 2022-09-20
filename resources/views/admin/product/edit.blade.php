@@ -4,7 +4,7 @@
 
 <div class="card mb-4">
     <div class="card-header">
-        Create Products
+        Edit Product
     </div>
     <div class="card-body">
         @if($errors->any())
@@ -14,9 +14,9 @@
             @endforeach
         </ul>
         @endif
-
-        <form method="POST" action="{{ route('admin.product.store') }}" enctype="multipart/form-data">
+        <form method="POST" action="{{ route('admin.product.update', ['id'=> $viewData['product']->getId()]) }}" enctype="multipart/form-data">
             @csrf
+            @method('PUT')
             <div class="row">
                 <div class="col">
                     <div class="mb-3 row">
@@ -98,61 +98,8 @@
                     <textarea class="form-control" name="description" rows="3">{{ old('description') }}</textarea>
                 </div>
             </div>
-
-            <button type="submit" class="btn btn-primary">Submit</button>
+            <button type="submit" class="btn btn-primary">Edit</button>
         </form>
-    </div>
-</div>
-
-<div class="card">
-    <div class="card-header">
-        Manage Products
-    </div>
-    <div class="card-body">
-        <table class="table table-bordered table-striped">
-            <thead>
-                <tr>
-                    <th scope="col">ID</th>
-                    <th scope="col">Name</th>
-                    <th scope="col">Description</th>
-                    <th scope="col">Category</th>
-                    <th scope="col">Brand</th>
-                    <th scope="col">Group</th>
-                    <th scope="col">Price</th>
-                    <th scope="col">Stock</th>
-                    <th scope="col">Edit</th>
-                    <th scope="col">Delete</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach ($viewData["products"] as $product)
-                <tr>
-                    <td>{{ $product->getId() }}</td>
-                    <td>{{ $product->getName() }}</td>
-                    <td>{{ $product->getDescription() }}</td>
-                    <td>{{ $product->getCategory() }}</td>
-                    <td>{{ $product->getBrand() }}</td>
-                    <td>{{ $product->getGroup() }}</td>
-                    <td>{{ $product->getPrice() }}</td>
-                    <td>{{ $product->getStock() }}</td>
-                    <td>
-                        <a class="btn btn-primary" href="{{route('admin.product.edit', ['id'=> $product->getId()])}}">Edit</a>
-                            <i class="bi-pencil"></i>
-                    </td>
-                    <td>
-                        <form action="{{ route('admin.product.delete', $product->getId())}}" method="POST">
-                            @csrf
-                            @method('DELETE')
-                            <button class="btn btn-danger">
-                                Delete
-                                <i class="bi-trash"></i>
-                            </button>
-                        </form>
-                    </td>
-                </tr>
-                @endforeach
-            </tbody>
-        </table>
     </div>
 </div>
 @endsection

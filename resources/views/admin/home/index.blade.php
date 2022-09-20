@@ -4,13 +4,6 @@
 
 <div class = "container">
     <div class = "row py-3">
-        <div class = "col-12 d-flex justify-content-between align-items-center">
-            <div class = "dashboard-title-text">
-                <h2>Wemoney Dashboard</h2>
-                <p class = "text-grey">Earning money online made easy.</p>
-            </div>
-            <button type = "button" class = "fs-18 text-grey-blue"><i class = "fas fa-ellipsis-vertical"></i></button>
-        </div>
     </div>
     <div class = "overview-section p-4">
         <div class = "row overview-section-title">
@@ -23,10 +16,6 @@
                 <a href = "#" class = "text-decoration-none">
                     <div class = "overview-section-item bg-white p-4">
                         <div class = "item-top d-flex align-items-center justify-content-between mb-3">
-                            <p class = "text-grey mb-0">Total Balance</p>
-                            <span class = "info-icon d-flex align-items-center justify-content-center bg-grey text-white fs-8">
-                                <i class = "fa-solid fa-question"></i>
-                            </span>
                         </div>
                         <div class = "item-title text-cyan fs-4 fw-6 mb-1">
                         {{ $product->getId() }} <span class = "text-blue">{{ $product->getName() }}</span>

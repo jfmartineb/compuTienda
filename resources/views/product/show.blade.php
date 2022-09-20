@@ -7,14 +7,14 @@
             <div class = "product-div">
                 <div class = "product-div-left">
                     <div class = "img-container">
-                        <img src = "images/w1.png" alt = "watch">
+                        <img src="{{ asset('/img/Ejemplo.jpg') }}" alt = "watch">
                     </div>
                     <div class = "hover-container">
-                        <div><img src = "images/w1.png"></div>
-                        <div><img src = "images/w2.png"></div>
-                        <div><img src = "images/w3.png"></div>
-                        <div><img src = "images/w4.png"></div>
-                        <div><img src = "images/w5.png"></div>
+                        <div><img src="{{ asset('/img/Ejemplo2.jpg') }}"></div>
+                        <div><img src="{{ asset('/img/Ejemplo3.jpg') }}"></div>
+                        <div><img src="{{ asset('/img/Ejemplo4.jpg') }}"></div>
+                        <div><img src="{{ asset('/img/Ejemplo5.jpg') }}"></div>
+                        <div><img src="{{ asset('/img/Ejemplo6.jpg') }}"></div>
                     </div>
                 </div>
                 <div class = "product-div-right">
@@ -43,5 +43,21 @@
         </div>
     </div>
 
-    <script src = "script.js"></script>
+    <script>
+    const allHoverImages = document.querySelectorAll('.hover-container div img');
+    const imgContainer = document.querySelector('.img-container');
+    
+    window.addEventListener('DOMContentLoaded', () => { allHoverImages[0].parentElement.classList.add('active');});
+    
+    allHoverImages.forEach((image) => {image.addEventListener('mouseover', () =>{ imgContainer.querySelector('img').src = image.src;
+        resetActiveImg();
+        image.parentElement.classList.add('active');});
+    });
+    
+    function resetActiveImg(){
+        allHoverImages.forEach((img) => {
+        img.parentElement.classList.remove('active');
+    });
+}
+    </script>
 @endsection

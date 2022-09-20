@@ -27,6 +27,20 @@ class Product extends Model
 
     protected $fillable = ['name','description','category','brand','group','price','stock','comments','image'];
 
+    public static function validate($request) 
+    {
+        $request->validate([
+            "name" => "required|max:255",
+            "category" => "required",
+            "brand" => "required",
+            "group" => "required",
+            "price" => "required|numeric|gt:0",
+            "stock" => "required|numeric",
+            "description" => "required",
+            'image' => 'image',
+        ]);
+    }
+
 // --------------------------------- ID ---------------------------------------------------
 public function getId()
 {
@@ -132,5 +146,16 @@ public function setStock($stock)
     {
         $this->review = $review;
     }
+
+// ---------------------------------IMAGE--------------------------------------------------
+    public function getImage()
+    {
+        return $this->attributes['image'];
+    }
+    
+    public function setImage($image)
+    {
+        $this->attributes['image'] = $image;
+    } 
 
 }

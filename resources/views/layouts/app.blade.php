@@ -21,18 +21,17 @@
                 <span class = "text-uppercase fw-lighter ms-2">Attire</span>
             </a>
 
-            <div class = "order-lg-2 nav-btns">
-                <button type = "button" class = "btn position-relative">
-                    <i class = "fa fa-shopping-cart"></i>
-                    <span class = "position-absolute top-0 start-100 translate-middle badge bg-primary">5</span>
-                </button>
-                <button type = "button" class = "btn position-relative">
-                    <i class = "fa fa-heart"></i>
-                    <span class = "position-absolute top-0 start-100 translate-middle badge bg-primary">2</span>
-                </button>
-                <button type = "button" class = "btn position-relative">
-                    <i class = "fa fa-search"></i>
-                </button>
+            <div class="order-lg-2 nav-btns text-center">
+                <div class="vr bg-white mx-2 d-none d-lg-block"></div>
+                @guest
+                <a class="nav-link active" href="{{ route('login') }}">Login</a>
+                <a class="nav-link active" href="{{ route('register') }}">Register</a>
+                @else
+                <form id="logout" action="{{ route('logout') }}" method="POST">
+                    <a role="button" class="nav-link active" onclick="document.getElementById('logout').submit();">Logout</a>
+                    @csrf
+                </form>
+                @endguest
             </div>
 
             <button class = "navbar-toggler border-0" type = "button" data-bs-toggle = "collapse" data-bs-target = "#navMenu">

@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use App\Models\Comment;
+use App\Models\Review;
 
 class Product extends Model
 {
@@ -20,66 +20,117 @@ class Product extends Model
      * $this->attributes['group'] - string - contains the product group
      * $this->attributes['price'] - int - contains the product price
      * $this->attributes['stock'] - int - contains the product stock
-     * $this->attributes['image'] - int - contains the product image
+     * $this->attributes['image'] - string - contains the product image
      * $this->comments - Comment[] - contains the associated comments
      * Image
     */
 
-    protected $fillable = ['name','price'];
+    protected $fillable = ['name','description','category','brand','group','price','stock','comments','image'];
 
-    public function getId()
+// --------------------------------- ID ---------------------------------------------------
+public function getId()
+{
+    return $this->attributes['id'];
+}
+
+public function setId($id)
+{
+    $this->attributes['id'] = $id;
+}
+// -------------------------------- NAME -------------------------------------------------
+public function getName()
+{
+    return $this->attributes['name'];
+}
+
+public function setName($name)
+{
+    $this->attributes['name'] = $name;
+}
+
+// ---------------------------------DESCRIPTION-----------------------------------------------
+
+public function getDescription()
+{
+    return $this->attributes['description'];
+}
+
+public function setDescription($description)
+{
+    $this->attributes['description'] = $description;
+}
+
+// --------------------------CATEGORY-------------------------------------------------
+
+public function getCategory()
+{
+    return $this->attributes['category'];
+}
+
+public function setCategory($category)
+{
+    $this->attributes['category'] = $category;
+}
+
+// -------------------------------------BRAND---------------------------------------------
+public function setBrand($brand)
+{
+    $this->attributes['brand'] = $brand;
+}
+
+public function getBrand()
+{
+    return $this->attributes['brand'];
+}
+
+// -------------------------------------GROUP---------------------------------------------
+public function setGroup($group)
+{
+    $this->attributes['group'] = $group;
+}
+
+public function getGroup()
+{
+    return $this->attributes['group'];
+}
+
+// ---------------------------------PRICE--------------------------------------------------
+public function getPrice()
+{
+    return $this->attributes['price'];
+}
+
+public function setPrice($price)
+{
+    $this->attributes['price'] = $price;
+}
+
+// ---------------------------------STOCK--------------------------------------------------
+public function getStock()
+{
+    return $this->attributes['stock'];
+}
+
+public function setStock($stock)
+{
+    $this->attributes['stock'] = $stock;
+}
+
+// ---------------------------------COMMENTS--------------------------------------------------
+
+    public function review()
     {
-        return $this->attributes['id'];
+        return $this->hasMany(Review::class);
     }
 
-    public function setId($id)
+    public function getReview()
     {
-        $this->attributes['id'] = $id;
+        return $this->review;
     }
 
-    public function getName()
+    public function setReview($review)
     {
-        return $this->attributes['name'];
+        $this->review = $review;
     }
-
-    public function setName($name)
-    {
-        $this->attributes['name'] = $name;
-    }
-
-    public function getPrice()
-    {
-        return $this->attributes['price'];
-    }
-
-    public function setPrice($price)
-    {
-        $this->attributes['price'] = $price;
-    }
-
-    public function comments()
-    {
-        return $this->hasMany(Comment::class);
-    }
-
-    public function getComments()
-    {
-        return $this->comments;
-    }
-
-    public function setComments($comments)
-    {
-        $this->comments = $comments;
-    }
-
-    public function getImage()
-    {
-        return $this->attributes['image'];
-    }
-    
-    public function setImage($image)
-    {
-        $this->attributes['image'] = $image;
-    } 
 
 }

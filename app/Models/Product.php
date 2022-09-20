@@ -133,4 +133,15 @@ public function setStock($stock)
         $this->review = $review;
     }
 
+// ---------------------------------IMAGE--------------------------------------------------
+    public function getImage()
+    {
+        return $this->attributes['image'];
+    }
+    
+    public function setImage($image)
+    {
+        $this->attributes['image'] = $image;
+    } 
+
 }

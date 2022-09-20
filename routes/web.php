@@ -18,3 +18,6 @@ Route::get('/about', 'App\Http\Controllers\HomeController@about')->name("home.ab
 Route::get('/contact', 'App\Http\Controllers\HomeController@contact')->name("home.contact");
 
 Route::get('/p/{id}', 'App\Http\Controllers\ProductController@show')->name("product.show");
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

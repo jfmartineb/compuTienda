@@ -83,6 +83,10 @@ class Review extends Model
         $this->attributes['acceptedReviews'] = $acceptedReviews ;
     }
 // --------------------------------------------------------------------------
+    public function product(){
+        return $this->belongsTo(Product::class);
+    }
+
     public function getProductId()
     {
         return $this->attributes['product_id'];
@@ -91,10 +95,6 @@ class Review extends Model
     public function setProductId($pId)
     {
         $this->attributes['product_id'] = $pId;
-    }
-
-    public function product(){
-        return $this->belongsTo(Product::class);
     }
 
     public function getProduct()
@@ -108,6 +108,9 @@ class Review extends Model
     }
 
 // --------------------------------------------------------------------------
+    public function user(){
+        return $this->belongsTo(User::class);
+    }
 
     public function getUserId()
     {
@@ -117,10 +120,6 @@ class Review extends Model
     public function setUserId($user_id)
     {
         $this->attributes['user_id'] = $user_id;
-    }
-
-    public function user(){
-        return $this->belongsTo(User::class);
     }
 
     public function getUser()

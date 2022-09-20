@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('category');
             $table->string('brand');
             $table->string('group');
+            $table->string('image');
             $table->integer('stock');
             $table->integer('price');
             $table->timestamps();

@@ -45,7 +45,7 @@
                 @foreach ($viewData["products"] as $product)
                     <div class = "col-md-6 col-lg-4 col-xl-3 p-2 best">
                         <div class = "collection-img position-relative">
-                            <img src = "images/c_formal_gray_shirt.png" class = "w-100">
+                            <img  src="{{ asset('/storage/'.$product->getImage()) }}"  class="card-img-top img-card">
                             <span class = "position-absolute bg-primary text-white d-flex align-items-center justify-content-center">sale</span>
                         </div>
                         <div class = "text-center">
@@ -56,7 +56,7 @@
                                 <span class = "text-primary"><i class = "fas fa-star"></i></span>
                                 <span class = "text-primary"><i class = "fas fa-star"></i></span>
                             </div>
-                            <p class = "text-capitalize my-1">{{ $product["name"] }}</p>
+                            <p class = "text-capitalize my-1">{{ $product->getName() }}</p>
                             <span class = "fw-bold">$ {{ $product["price"] }}</span>
                             <br>
                             <a href="{{ route('product.show', ['id'=> $product["id"]]) }}" class = "btn mt-3 text-uppercase">buy now</a>

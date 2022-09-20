@@ -14,8 +14,15 @@ class Product extends Model
      * PRODUCT ATTRIBUTES
      * $this->attributes['id'] - int - contains the product primary key (id)
      * $this->attributes['name'] - string - contains the product name
+     * $this->attributes['description'] - string - contains the product description
+     * $this->attributes['category'] - string - contains the product category
+     * $this->attributes['brand'] - string - contains the product brand
+     * $this->attributes['group'] - string - contains the product group
      * $this->attributes['price'] - int - contains the product price
+     * $this->attributes['stock'] - int - contains the product stock
+     * $this->attributes['image'] - int - contains the product image
      * $this->comments - Comment[] - contains the associated comments
+     * Image
     */
 
     protected $fillable = ['name','price'];
@@ -64,5 +71,15 @@ class Product extends Model
     {
         $this->comments = $comments;
     }
+
+    public function getImage()
+    {
+        return $this->attributes['image'];
+    }
+    
+    public function setImage($image)
+    {
+        $this->attributes['image'] = $image;
+    } 
 
 }

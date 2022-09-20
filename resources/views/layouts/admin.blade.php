@@ -53,7 +53,7 @@
                     <h5 class = "text-uppercase text-grey navbar-sb-item-title fs-12 ls-1">Products</h5>
                     <ul class = "navbar-sb-links p-0 list-unstyled">
                         <li class = "navbar-sb-link my-3">
-                            <a href = "#" class = "text-decoration-none d-flex align-items-center justify-content-between">
+                            <a  href="{{ route('admin.home.index') }}"  class = "text-decoration-none d-flex align-items-center justify-content-between">
                                 <div class = "text-light-blue d-flex align-items-center">
                                     <span class = "navbar-sb-icon me-3">
                                         <i class = "fa-solid fa-gauge"></i>
@@ -82,16 +82,6 @@
                             <a href = "#" class = "text-decoration-none d-flex align-items-center justify-content-between">
                                 <div class = "text-light-blue d-flex align-items-center">
                                     <span class = "navbar-sb-icon me-3">
-                                        <i class = "fa-solid fa-clock-rotate-left"></i>
-                                    </span>
-                                    <span class = "navbar-sb-text fs-14 fw-5 text-capitalize">payment</span>
-                                </div>
-                            </a>
-                        </li>
-                        <li class = "navbar-sb-link my-3">
-                            <a href = "#" class = "text-decoration-none d-flex align-items-center justify-content-between">
-                                <div class = "text-light-blue d-flex align-items-center">
-                                    <span class = "navbar-sb-icon me-3">
                                         <i class = "fa-regular fa-circle-user"></i>
                                     </span>
                                     <span class = "navbar-sb-text fs-14 fw-5 text-capitalize">profile</span>
@@ -115,6 +105,16 @@
                 <div class = "navbar-sb-item mb-5">
                     <h5 class = "text-uppercase text-grey navbar-sb-item-title fs-12 ls-1">misc pages</h5>
                     <ul class = "navbar-sb-links p-0 list-unstyled">
+                    <li class = "navbar-sb-link my-3">
+                            <a href="{{ route('home.index') }}" class = "text-decoration-none d-flex align-items-center justify-content-between">
+                                <div class = "text-light-blue d-flex align-items-center">
+                                    <span class = "navbar-sb-icon me-3">
+                                        <i class = "fa-solid fa-clock-rotate-left"></i>
+                                    </span>
+                                    <span class = "navbar-sb-text fs-14 fw-5 ">Back to products home</span>
+                                </div>
+                            </a>
+                        </li>
                         <li class = "navbar-sb-link my-3">
                             <a href = "#" class = "text-decoration-none d-flex align-items-center justify-content-between">
                                 <div class = "text-light-blue d-flex align-items-center">

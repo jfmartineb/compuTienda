@@ -18,3 +18,7 @@ Route::get('/about', 'App\Http\Controllers\HomeController@about')->name("home.ab
 Route::get('/contact', 'App\Http\Controllers\HomeController@contact')->name("home.contact");
 
 Route::get('/p/{id}', 'App\Http\Controllers\ProductController@show')->name("product.show");
+
+Route::get('/admin', 'App\Http\Controllers\Admin\AdminHomeController@index')->name("admin.home.index"); 
+Route::get('/admin/product', 'App\Http\Controllers\Admin\AdminProductController@index')->name("admin.product.index"); 
+Route::post('/admin/products/store', 'App\Http\Controllers\Admin\AdminProductController@store')->name("admin.product.store");

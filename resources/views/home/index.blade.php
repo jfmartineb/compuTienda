@@ -45,7 +45,7 @@
                 @foreach ($viewData["products"] as $product)
                     <div class = "col-md-6 col-lg-4 col-xl-3 p-2 best">
                         <div class = "collection-img position-relative">
-                            <img src="{{ asset('/img/Ejemplo.jpg') }}" c class="card-img-top img-card">
+                            <img src="{{ asset('/img/Ejemplo.jpg') }}" class="card-img-top img-card">
                             <span class = "position-absolute bg-primary text-white d-flex align-items-center justify-content-center">sale</span>
                         </div>
                         <div class = "text-center">

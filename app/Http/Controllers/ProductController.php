@@ -9,15 +9,6 @@ use App\Models\Product;
 class ProductController extends Controller
 {
 
-    public function index()
-    {
-        $viewData = [];
-        $viewData["title"] = "Products - Online Store";
-        $viewData["subtitle"] =  "List of products";
-        $viewData["products"] = Product::all();
-        return view('product.index')->with("viewData", $viewData);
-    }
-
     public function show($id)
     {
         $viewData = [];
@@ -27,23 +18,4 @@ class ProductController extends Controller
         $viewData["product"] = $product;
         return view('product.show')->with("viewData", $viewData);
     }
-
-    public function create()
-    {
-        $viewData = []; //to be sent to the view
-        $viewData["title"] = "Create product";
-        return view('product.create')->with("viewData",$viewData);
-    }
-
-    public function save(Request $request)
-    {
-        $request->validate([
-            "name" => "required",
-            "price" => "required|gt:0"
-        ]);
-        Product::create($request->only(["name","price"]));
-        return back();
-    }
-
-
 }

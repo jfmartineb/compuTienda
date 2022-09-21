@@ -20,15 +20,15 @@ class Review extends Model
      * $this->attributes['acceptedReviews'] - bool - contains the comment acception
      * $this->user - User - contains the associated User
      * $this->product - Product - contains the associated Product
-    */
-
+     */
     protected $fillable = ['title', 'score', 'description'];
 
-    public static function validation(Request $request){
+    public static function validation(Request $request)
+    {
         $request->validate([
-            "title" => "required|max:255",
-            "score" => "required",
-            "description" => "required"
+            'title' => 'required|max:255',
+            'score' => 'required',
+            'description' => 'required',
         ]);
     }
 
@@ -57,15 +57,17 @@ class Review extends Model
         return $this->attributes['score'];
     }
 
-    public function getScoreArray(){
+    public function getScoreArray()
+    {
         $array = [0, 0, 0, 0, 0];
-        $score =  $this->attributes['score'];
-        for ($i = 0; $i < 5; $i++){
-            if ($score> 0){
+        $score = $this->attributes['score'];
+        for ($i = 0; $i < 5; $i++) {
+            if ($score > 0) {
                 $array[$i] = 1;
             }
-           $score -= 1;
+            $score -= 1;
         }
+
         return $array;
     }
 
@@ -80,17 +82,18 @@ class Review extends Model
     }
 
     public function getDescriptionShort()
-    {   
+    {
         $desc = $this->attributes['description'];
         if (strlen($desc) > 255) {
             substr($desc, 0, 255);
         }
+
         return $desc;
     }
 
     public function setDescription($description)
     {
-        $this->attributes['description'] = $description ;
+        $this->attributes['description'] = $description;
     }
 
     public function getCreateAt()
@@ -100,7 +103,7 @@ class Review extends Model
 
     public function setCreateAt($createAt)
     {
-        $this->attributes['createAt'] = $createAt ;
+        $this->attributes['createAt'] = $createAt;
     }
 
     public function getAcceptedReviews()
@@ -110,10 +113,12 @@ class Review extends Model
 
     public function setAcceptedReviews($acceptedReviews)
     {
-        $this->attributes['acceptedReviews'] = $acceptedReviews ;
+        $this->attributes['acceptedReviews'] = $acceptedReviews;
     }
+
 // --------------------------------------------------------------------------
-    public function product(){
+    public function product()
+    {
         return $this->belongsTo(Product::class);
     }
 
@@ -138,7 +143,8 @@ class Review extends Model
     }
 
 // --------------------------------------------------------------------------
-    public function user(){
+    public function user()
+    {
         return $this->belongsTo(User::class);
     }
 

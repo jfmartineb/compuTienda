@@ -4,8 +4,6 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use App\Models\Order;
-use App\Models\Product;
 
 class Order extends Model
 {
@@ -16,13 +14,12 @@ class Order extends Model
      * $this->attributes['id'] - int - contains the item primary key (id)
      * $this->attributes['totalPrice'] - int - contains the item total value
      * $this->attributes['quantity'] - int - contains the item product quantity
-     * $this->attributes['order'] - Order - contains the order that owns the item 
+     * $this->attributes['order'] - Order - contains the order that owns the item
      * $this->attributes['Product'] - Product - contains the Product that is in the item
      * $this->attributes['created_at'] - DateTime - contains the time the product was created
      * $this->attributes['updated_at'] - DateTime - contains the time the product was last updated
-    */
-
-    protected $fillable = ['name','price'];
+     */
+    protected $fillable = ['name', 'price'];
 
     public function getId()
     {
@@ -75,7 +72,8 @@ class Order extends Model
     }
 
     //--------------------------------------------------------
-    public function order(){
+    public function order()
+    {
         return $this->belongsTo(Order::class);
     }
 
@@ -90,7 +88,8 @@ class Order extends Model
     }
 
     //--------------------------------------------------------
-    public function Product(){
+    public function Product()
+    {
         return $this->belongsTo(Product::class);
     }
 

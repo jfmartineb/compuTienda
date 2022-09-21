@@ -4,8 +4,6 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use App\Models\User;
-use App\Models\Item;
 
 class Order extends Model
 {
@@ -20,9 +18,8 @@ class Order extends Model
      * $this->attributes['user'] - User - get the user that owns the order
      * $this->attributes['created_at'] - DateTime - contains the time the product was created
      * $this->attributes['updated_at'] - DateTime - contains the time the product was last updated
-    */
-
-    protected $fillable = ['name','price'];
+     */
+    protected $fillable = ['name', 'price'];
 
     public function getId()
     {
@@ -91,7 +88,8 @@ class Order extends Model
     }
 
     //----------------------------------------------------
-    public function user(){
+    public function user()
+    {
         return $this->belongsTo(User::class);
     }
 
@@ -104,5 +102,4 @@ class Order extends Model
     {
         $this->user = $user;
     }
-
 }

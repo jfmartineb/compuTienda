@@ -5,9 +5,6 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-use App\Models\Review;
-use App\Models\Item;
-
 class Product extends Model
 {
     use HasFactory;
@@ -25,20 +22,19 @@ class Product extends Model
      * $this->attributes['image'] - string - contains the product image
      * $this->comments - Comment[] - contains the associated comments
      * Image
-    */
+     */
+    protected $fillable = ['name', 'description', 'category', 'brand', 'group', 'price', 'stock', 'comments', 'image'];
 
-    protected $fillable = ['name','description','category','brand','group','price','stock','comments','image'];
-
-    public static function validate($request) 
+    public static function validate($request)
     {
         $request->validate([
-            "name" => "required|max:255",
-            "category" => "required",
-            "brand" => "required",
-            "group" => "required",
-            "price" => "required|numeric|gt:0",
-            "stock" => "required|numeric",
-            "description" => "required",
+            'name' => 'required|max:255',
+            'category' => 'required',
+            'brand' => 'required',
+            'group' => 'required',
+            'price' => 'required|numeric|gt:0',
+            'stock' => 'required|numeric',
+            'description' => 'required',
             'image' => 'image',
         ]);
     }
@@ -53,6 +49,7 @@ public function setId($id)
 {
     $this->attributes['id'] = $id;
 }
+
 // -------------------------------- NAME -------------------------------------------------
 public function getName()
 {
@@ -154,26 +151,25 @@ public function setStock($stock)
     {
         return $this->attributes['image'];
     }
-    
+
     public function setImage($image)
     {
         $this->attributes['image'] = $image;
-    } 
-
-// -------------------------------Items-----------------------------------------------------
-    public function items() 
-    { 
-        return $this->hasMany(Item::class); 
-    } 
-    
-    public function getItems() 
-    { 
-        return $this->items; 
-    } 
-    
-    public function setItems($items) 
-    { 
-        $this->items = $items; 
     }
 
+// -------------------------------Items-----------------------------------------------------
+    public function items()
+    {
+        return $this->hasMany(Item::class);
+    }
+
+    public function getItems()
+    {
+        return $this->items;
+    }
+
+    public function setItems($items)
+    {
+        $this->items = $items;
+    }
 }

@@ -18,4 +18,31 @@ class ProductController extends Controller
         $viewData["product"] = $product;
         return view('product.show')->with("viewData", $viewData);
     }
+
+    public function create()
+    {
+        $viewData = []; //to be sent to the view
+        $viewData["title"] = "Create product";
+        return view('product.create')->with("viewData",$viewData);
+    }
+
+    public function save(Request $request)
+    {
+        $request->validate([
+            "name" => "required",
+            "price" => "required|gt:0"
+        ]);
+        Product::create($request->only(["name","price"]));
+        return back();
+    }
+
+    public static function sumPricesByQuantities($products, $productsInSession) 
+    { 
+        $total = 0; 
+        foreach ($products as $product) 
+        { 
+            $total = $total + ($product->getPrice()*$productsInSession[$product->getId()]); 
+        } 
+        return $total; 
+    }
 }

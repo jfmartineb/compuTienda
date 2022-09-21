@@ -32,7 +32,11 @@
                     <div class="mb-3 row">
                         <label class="col-lg-2 col-md-6 col-sm-12 col-form-label">Category:</label>
                         <div class="col-lg-10 col-md-6 col-sm-12">
-                            <input name="category" value="{{ old('category') }}" type="text" class="form-control">
+                            <select class="form-select" aria-label="Default select example" name="category" value="{{ old('category') }}">
+                                <option selected>Product Category</option>
+                                <option value="computers">Computers</option>
+                                <option value="accsesories">Accsesories</option>
+                            </select>
                         </div>
                     </div>
                 </div>
@@ -52,7 +56,13 @@
                     <div class="mb-3 row">
                         <label class="col-lg-2 col-md-6 col-sm-12 col-form-label">Group:</label>
                         <div class="col-lg-10 col-md-6 col-sm-12">
-                            <input name="group" value="{{ old('group') }}" type="text" class="form-control">
+                            <select class="form-select"  name="group" value="{{ old('group') }}">
+                                <option selected>Product Group</option>
+                                <option value="gaming">Gaming</option>
+                                <option value="workstation">Workstation</option>
+                                <option value="casual">Casual</option>
+                                <option value="personal">Personal</option>
+                            </select>
                         </div>
                     </div>
                 </div>

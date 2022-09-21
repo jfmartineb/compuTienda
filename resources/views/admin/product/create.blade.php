@@ -38,8 +38,11 @@
                         <div class="form-item">
                             <label for="category">Product category</label>
                             <div class="form-group">
-                                <span><i class="fas fa-user"></i></span>
-                                <input type="text" class="form-control" id="category" placeholder="category" value="{{ old('category') }}">
+                                <select class="form-select" aria-label="Default select example" name="category" value="{{ old('category') }}">
+                                    <option selected>Car type</option>
+                                    <option value="computers">Computers</option>
+                                    <option value="accsesories">Accsesories</option>
+                                </select>
                             </div>
                         </div>
                         <!-- end of item -->

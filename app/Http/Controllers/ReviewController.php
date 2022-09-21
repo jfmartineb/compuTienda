@@ -4,34 +4,32 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Product;
+use App\Models\Review;
 
 class ReviewController extends Controller
 {
-    public function index()
-    {
+    public function index($productId){
         $viewData = [];
-        $viewData["title"] = "Products - Online Store";
-        $viewData["subtitle"] =  "List of products";
-        $viewData["products"] = Product::all();
-        return view('home.index')->with("viewData", $viewData);
-    }
-    
-    public function about()
-    {
-        $data1 = "About us - Online Store";
-        $data2 = "About us";
-        $description = "This is an about page ...";
-        $author = "Developed by: Your Name";
-        return view('home.about')->with("title", $data1)
-        ->with("subtitle", $data2)
-        ->with("description", $description)
-        ->with("author", $author);
-        
-        return view('home.about');
+        $viewData["title"] = "Add a review";
+        $product = Product::findOrFail($productId);
+        $viewData["subtitle"] =  "Write a review of product".$product->getName();
+        $viewData["productName"] = $product->getName();
+        $viewData["productId"] = $productId;
+        return view('review.index')->with("viewData", $viewData);
     }
 
-    public function contact()
-    {
-        return view('home.contact');
+    public function save(Request $request){
+        $viewData = [];
+        $viewData['title'] = "Added Review";
+        Review::validation($request);
+        $review = new Review();
+        $review->setTitle($request->input('title'));
+        $review->setScore($request->input('score'));
+        $review->setDescription($request->input('description'));
+        $review->setProduct($request->input("productId"));
+        $review->setUser(auth()->id());
+        $review->save();
+
+        return redirect()->route('product.show', $request->input("productId"));
     }
 }

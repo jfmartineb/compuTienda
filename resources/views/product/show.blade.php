@@ -42,7 +42,7 @@
                         </div> 
                     </div> 
                 </form>
-                <form method="GET" action="{{ route('cart.add', ['id'=> $viewData['product']->getId()]) }}"> 
+                <form method="GET" action="{{ route('review.index', ['id'=> $viewData["product"]->getId()]) }}"> 
                     <div class="row"> 
                         <div class="col-auto"> 
                             <button class="btn bg-primary text-white" type="submit">Add a coment<i class="fas fa-pen-fancy"></i></button> 

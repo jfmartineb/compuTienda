@@ -16,9 +16,12 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', 'App\Http\Controllers\HomeController@index')->name("home.index");
 Route::get('/about', 'App\Http\Controllers\HomeController@about')->name("home.about");
 
+Route::get('/review/{id}', 'App\Http\Controllers\ReviewController@index')->name("review.index");
+Route::post('/review/store', 'App\Http\Controllers\ReviewController@save')->name("review.add");
+
 Route::get('/cart', 'App\Http\Controllers\CartController@index')->name("cart.index"); 
 Route::get('/cart/delete', 'App\Http\Controllers\CartController@removeAll')->name("cart.delete"); 
-
+Route::post('/cart/add/{id}', 'App\Http\Controllers\CartController@add')->name("cart.add");
 
 Route::get('/product', 'App\Http\Controllers\ProductController@index')->name("product.index");
 Route::get('/product/{id}', 'App\Http\Controllers\ProductController@show')->name("product.show");
@@ -29,7 +32,6 @@ Route::post('/admin/products/store', 'App\Http\Controllers\Admin\AdminProductCon
 Route::delete('/admin/products/{id}/delete','App\Http\Controllers\Admin\AdminProductController@delete')->name("admin.product.delete");
 Route::get('/admin/products/{id}/edit','App\Http\Controllers\Admin\AdminProductController@edit')->name("admin.product.edit");
 Route::put('/admin/products/{id}/update','App\Http\Controllers\Admin\AdminProductController@update')->name("admin.product.update"); 
-Route::post('/cart/add/{id}', 'App\Http\Controllers\CartController@add')->name("cart.add");
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

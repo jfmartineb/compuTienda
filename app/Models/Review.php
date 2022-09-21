@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Http\Request;
 
 class Review extends Model
 {
@@ -21,7 +22,15 @@ class Review extends Model
      * $this->product - Product - contains the associated Product
     */
 
-    protected $fillable = ['description', 'product_id'];
+    protected $fillable = ['title', 'score', 'description'];
+
+    public static function validation(Request $request){
+        $request->validate([
+            "title" => "required|max:255",
+            "score" => "required",
+            "description" => "required"
+        ]);
+    }
 
     public function getId()
     {

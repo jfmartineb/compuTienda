@@ -9,15 +9,6 @@ use App\Models\Product;
 class ProductController extends Controller
 {
 
-    public function index()
-    {
-        $viewData = [];
-        $viewData["title"] = "Products - Online Store";
-        $viewData["subtitle"] =  "List of products";
-        $viewData["products"] = Product::all();
-        return view('product.index')->with("viewData", $viewData);
-    }
-
     public function show($id)
     {
         $viewData = [];
@@ -45,5 +36,13 @@ class ProductController extends Controller
         return back();
     }
 
-
+    public static function sumPricesByQuantities($products, $productsInSession) 
+    { 
+        $total = 0; 
+        foreach ($products as $product) 
+        { 
+            $total = $total + ($product->getPrice()*$productsInSession[$product->getId()]); 
+        } 
+        return $total; 
+    }
 }

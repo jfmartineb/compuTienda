@@ -4,7 +4,9 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+
 use App\Models\Review;
+use App\Models\Item;
 
 class Product extends Model
 {
@@ -157,5 +159,21 @@ public function setStock($stock)
     {
         $this->attributes['image'] = $image;
     } 
+
+// -------------------------------Items-----------------------------------------------------
+    public function items() 
+    { 
+        return $this->hasMany(Item::class); 
+    } 
+    
+    public function getItems() 
+    { 
+        return $this->items; 
+    } 
+    
+    public function setItems($items) 
+    { 
+        $this->items = $items; 
+    }
 
 }

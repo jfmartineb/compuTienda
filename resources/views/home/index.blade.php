@@ -43,9 +43,9 @@
 
                 <div class = "collection-list mt-4 row gx-0 gy-3">
                 @foreach ($viewData["products"] as $product)
-                    <div class = "col-md-6 col-lg-4 col-xl-3 p-2 best">
+                    <div class = "col-md-6 col-lg-4 col-xl-3 p-2" style="background-color:aqua ;">
                         <div class = "collection-img position-relative">
-                            <img  src="{{ asset('/storage/'.$product->getImage()) }}"  class="card-img-top img-card">
+                            <img  src="{{ asset('/storage/'.$product->getImage()) }}"  class = "w-10">
                             <span class = "position-absolute bg-primary text-white d-flex align-items-center justify-content-center">sale</span>
                         </div>
                         <div class = "text-center">

@@ -7,7 +7,7 @@
             <div class = "product-div">
                 <div class = "product-div-left">
                     <div class = "img-container">
-                        <img src="{{ asset('/img/Ejemplo.jpg') }}" alt = "watch">
+                        <img  src="{{ asset('/storage/'.$viewData["product"]->getImage()) }}" alt = "watch">
                     </div>
                     <div class = "hover-container">
                         <div><img src="{{ asset('/img/Ejemplo2.jpg') }}"></div>

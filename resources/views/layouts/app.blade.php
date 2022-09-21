@@ -47,7 +47,7 @@
                         <a class = "nav-link text-uppercase text-dark" href="{{ route('home.about') }}">About</a>
                     </li>
                     <li class = "nav-item px-2 py-2">
-                        <a class = "nav-link text-uppercase text-dark" href = "#special">specials</a>
+                        <a class = "nav-link text-uppercase text-dark" href = "{{ route('cart.index') }}">Cart</a>
                     </li>
                     <li class = "nav-item px-2 py-2 border-0">
                         <a class = "nav-link text-uppercase text-dark" href = "#popular">popular</a>

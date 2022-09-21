@@ -35,34 +35,11 @@
 
             <div class = "row g-0">
                 <div class = "d-flex flex-wrap justify-content-center mt-5 filter-button-group">
-                    <button type = "button" class = "btn m-2 text-dark active-filter-btn" data-filter = "*">All</button>
+                    <a href="{{ route('product.index') }}" class = "btn m-2 text-dark">All products</a>
                     <button type = "button" class = "btn m-2 text-dark" data-filter = ".best">Best Sellers</button>
                     <button type = "button" class = "btn m-2 text-dark" data-filter = ".feat">Featured</button>
                     <button type = "button" class = "btn m-2 text-dark" data-filter = ".new">New Arrival</button>
                 </div>
-
-                <div class = "collection-list mt-4 row gx-0 gy-3">
-                @foreach ($viewData["products"] as $product)
-                    <div class = "col-md-6 col-lg-4 col-xl-3 p-2 best">
-                        <div class = "collection-img position-relative">
-                            <img  src="{{ asset('/storage/'.$product->getImage()) }}"  class="card-img-top img-card">
-                            <span class = "position-absolute bg-primary text-white d-flex align-items-center justify-content-center">sale</span>
-                        </div>
-                        <div class = "text-center">
-                            <div class = "rating mt-3">
-                                <span class = "text-primary"><i class = "fas fa-star"></i></span>
-                                <span class = "text-primary"><i class = "fas fa-star"></i></span>
-                                <span class = "text-primary"><i class = "fas fa-star"></i></span>
-                                <span class = "text-primary"><i class = "fas fa-star"></i></span>
-                                <span class = "text-primary"><i class = "fas fa-star"></i></span>
-                            </div>
-                            <p class = "text-capitalize my-1">{{ $product->getName() }}</p>
-                            <span class = "fw-bold">$ {{ $product["price"] }}</span>
-                            <br>
-                            <a href="{{ route('product.show', ['id'=> $product["id"]]) }}" class = "btn mt-3 text-uppercase">buy now</a>
-                        </div>
-                    </div>
-                @endforeach
             </div>
         </div>
     </section>

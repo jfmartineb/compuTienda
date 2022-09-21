@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
+use App\Models\Product;
+use App\Http\Controllers\ProductController;
+
 class CartController extends Controller
 {
     public function index(Request $request)
@@ -13,7 +16,7 @@ class CartController extends Controller
         if ($productsInSession) 
         { 
             $productsInCart = Product::findMany(array_keys($productsInSession)); 
-            $total = Product::sumPricesByQuantities($productsInCart, $productsInSession); 
+            $total = ProductController::sumPricesByQuantities($productsInCart, $productsInSession); 
         } 
         $viewData = []; 
         $viewData["title"] = "Cart - Online Store"; 

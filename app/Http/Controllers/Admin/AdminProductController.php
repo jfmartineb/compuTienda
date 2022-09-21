@@ -81,9 +81,10 @@ class AdminProductController extends Controller
                 $imageName,
                 file_get_contents($request->file('image')->getRealPath())
             );
-            $product->setImage($imageName);
+        } else {
+            $imageName = "public\img\Ejemplo3.jpg";
         }
-        
+        $product->setImage($imageName);
         $product->save();
         return redirect()->route('admin.product.index');
     }

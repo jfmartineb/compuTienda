@@ -16,8 +16,10 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', 'App\Http\Controllers\HomeController@index')->name("home.index");
 Route::get('/about', 'App\Http\Controllers\HomeController@about')->name("home.about");
 
+Route::post('/review/store', 'App\Http\Controllers\ReviewController@add')->name("review.add");
+Route::get('/review/show/{id}', 'App\Http\Controllers\ReviewController@show')->name("review.show");
 Route::get('/review/{id}', 'App\Http\Controllers\ReviewController@index')->name("review.index");
-Route::post('/review/store', 'App\Http\Controllers\ReviewController@save')->name("review.add");
+
 
 Route::get('/cart', 'App\Http\Controllers\CartController@index')->name("cart.index"); 
 Route::get('/cart/delete', 'App\Http\Controllers\CartController@removeAll')->name("cart.delete"); 

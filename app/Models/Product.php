@@ -134,19 +134,19 @@ public function setStock($stock)
 
 // ---------------------------------COMMENTS--------------------------------------------------
 
-    public function review()
+    public function reviews()
     {
         return $this->hasMany(Review::class);
     }
 
-    public function getReview()
+    public function getReviews()
     {
-        return $this->review;
+        return $this->reviews;
     }
 
-    public function setReview($review)
+    public function setReviews($reviews)
     {
-        $this->review = $review;
+        $this->reviews = $reviews;
     }
 
 // ---------------------------------IMAGE--------------------------------------------------

@@ -18,9 +18,7 @@ class ReviewController extends Controller
         return view('review.index')->with("viewData", $viewData);
     }
 
-    public function save(Request $request){
-        $viewData = [];
-        $viewData['title'] = "Added Review";
+    public function add(Request $request){
         Review::validation($request);
         $review = new Review();
         $review->setTitle($request->input('title'));
@@ -31,5 +29,15 @@ class ReviewController extends Controller
         $review->save();
 
         return redirect()->route('product.show', $request->input("productId"));
+    }
+
+    public function show($id){
+        $viewData = [];
+        $review = Review::findOrFail($id);
+        $viewData['title'] = "Review of ".$review->getTitle();
+        $viewData['subtitle'] = $review->getTitle();
+        $viewData['review'] = $review;
+
+        return view('review.show')->with("viewData", $viewData);
     }
 }

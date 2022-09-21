@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Product;
-
+use App\Models\Review;
 
 class ProductController extends Controller
 {
@@ -21,10 +21,28 @@ class ProductController extends Controller
     public function show($id)
     {
         $viewData = [];
+        $score = [0, 0, 0, 0, 0];
         $product = Product::findOrFail($id);
         $viewData["title"] = $product["name"]." - Online Store";
         $viewData["subtitle"] =  $product["name"]." - Product information";
         $viewData["product"] = $product;
+        $reviews = $product->getReviews();
+        $numReviews = 0;
+        $medScore = 0;
+        foreach ($reviews as $review){
+            $numReviews += 1;
+            $medScore += $review->getScore();
+        }
+        $avg = $medScore/$numReviews;
+        for ($i = 0; $i < 5; $i++){
+            if ($avg > 0){
+                $score[$i] = 1;
+            }
+            $avg -= 1;
+        }
+        $viewData["score"] = $score;
+        $viewData["totalReviews"] = $numReviews;
+        $viewData["reviews"] = $reviews;
         return view('product.show')->with("viewData", $viewData);
     }
 

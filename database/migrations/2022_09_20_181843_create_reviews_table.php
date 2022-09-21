@@ -19,7 +19,6 @@ return new class extends Migration
             $table->integer('score');
             $table->text('description');
             $table->dateTime('createAt');
-            $table->boolean('acceptedReviews');
             $table->unsignedBigInteger('product_id');
             $table->unsignedBigInteger('user_id');
             // $table->foreign('product_id')->references('id')->on('products');

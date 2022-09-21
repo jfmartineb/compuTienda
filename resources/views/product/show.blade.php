@@ -2,7 +2,7 @@
 @section('title', $viewData["title"])
 @section('subtitle', $viewData["subtitle"])
 @section('content')
-<div class = "main-wrapper">
+<div class="container py-5" style = "margin-top: 104px;">
     <div class = "container">
         <div class = "product-div">
             <div class = "product-div-left">
@@ -16,12 +16,14 @@
                 <span class = "product-name">{{ $viewData["product"]->getName() }}</span>
                 <span class = "product-price">$ {{ $viewData["product"]->getPrice() }}</span>
                 <div class = "product-rating">
-                    <span><i class = "fas fa-star"></i></span>
-                    <span><i class = "fas fa-star"></i></span>
-                    <span><i class = "fas fa-star"></i></span>
-                    <span><i class = "fas fa-star"></i></span>
-                    <span><i class = "fas fa-star-half-alt"></i></span>
-                    <span>(350 ratings)</span>
+                    @foreach($viewData['score'] as $i)
+                        @if ($i == 1)
+                            <span><i class = "fas fa-star"></i></span>
+                        @else
+                            <span><i class='fa fa-star' style='color:#c9c6b6'></i></span>
+                        @endif
+                    @endforeach
+                    <span>({{ $viewData['totalReviews'] }} ratings)</span>
                 </div>
                 <p class = "product-a"><strong>Stock :</strong> {{ $viewData["product"]->getStock() }}</p>
                 <p class = "product-a"><strong>Brand :</strong> {{ $viewData["product"]->getBrand() }}</p>
@@ -51,6 +53,40 @@
                 </form>
             </div>
         </div>
+    </div>
+    <div class = "container">
+        @foreach ($viewData['reviews'] as $review)
+            <div class = "container" color = "#E8DFDD">
+                <div class = "row">
+                    <h3>Title: {{ $review->getTitle() }}</h3>
+                </div>
+                <div class = "row">
+                    <p>By: {{ $review->getUser()["name"] }}</p>
+                </div>
+                <div class = "row">
+                    <p>Score: 
+                        @foreach($review->getScoreArray() as $i)
+                            @if ($i == 1)
+                                <span><i class = "fas fa-star"></i></span>
+                            @else
+                                <span><i class='fa fa-star' style='color:#c9c6b6'></i></span>
+                            @endif
+                        @endforeach
+                    </p> 
+                </div>
+                <div class = "row">
+                    <p>Description: {{ $review->getDescription() }} 
+                    <form method="GET" action="{{ route('review.show', ['id'=> $review->getId()]) }}"> 
+                         
+                            <div class="col-auto"> 
+                                <button class="btn bg-primary text-white" type="submit">View full<i class="fas fa-pen-fancy"></i></button> 
+                            </div> 
+                        
+                    </form>
+                    </p>
+                </div>
+            </div>
+        @endforeach
     </div>
 </div>
 @endsection

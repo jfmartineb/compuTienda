@@ -57,6 +57,18 @@ class Review extends Model
         return $this->attributes['score'];
     }
 
+    public function getScoreArray(){
+        $array = [0, 0, 0, 0, 0];
+        $score =  $this->attributes['score'];
+        for ($i = 0; $i < 5; $i++){
+            if ($score> 0){
+                $array[$i] = 1;
+            }
+           $score -= 1;
+        }
+        return $array;
+    }
+
     public function setScore($score)
     {
         $this->attributes['score'] = $score;
@@ -65,6 +77,15 @@ class Review extends Model
     public function getDescription()
     {
         return $this->attributes['description'];
+    }
+
+    public function getDescriptionShort()
+    {   
+        $desc = $this->attributes['description'];
+        if (strlen($desc) > 255) {
+            substr($desc, 0, 255);
+        }
+        return $desc;
     }
 
     public function setDescription($description)

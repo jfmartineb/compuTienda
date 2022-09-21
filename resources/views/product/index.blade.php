@@ -10,13 +10,7 @@
                                     <img  src="{{ asset('/storage/'.$product->getImage()) }}"  class="card-img-top img-card">
                                 </div>
                                 <div class = "text-center">
-                                    <div class = "rating mt-3">
-                                        <span class = "text-primary"><i class = "fas fa-star"></i></span>
-                                        <span class = "text-primary"><i class = "fas fa-star"></i></span>
-                                        <span class = "text-primary"><i class = "fas fa-star"></i></span>
-                                        <span class = "text-primary"><i class = "fas fa-star"></i></span>
-                                        <span class = "text-primary"><i class = "fas fa-star"></i></span>
-                                    </div>
+                                    
                                     <p class = "text-capitalize my-1">{{ $product->getName() }}</p>
                                     <span class = "fw-bold">$ {{ $product->getPrice() }}</span>
                                     <br>

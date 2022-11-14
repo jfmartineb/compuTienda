@@ -18,12 +18,20 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
+    
     - name: docker login
       env:
         DOCKER_USER: ${{secrets.DOCKERHUB_USER}}
         DOCKER_PASS: ${{secrets.DOCKERHUB_PASS}}
       run: |
         docker login -u $DOCKER_USER -p $DOCKER_PASS
+        
+    - name: Copy ENV Laravel Configuration for CI
+      run: php -r "file_exists('.env') || copy('.env.example', '.env');"    
+        
+    - name: Copy dotenv file
+      run: php -r "file_put_contents(__DIR__ . '/.env', '${{ secrets.DOT_ENV }}');"
+        
     - name: Build the Docker image
       run: docker build . --file Dockerfile --tag jfmartineb/computienda:latest
       

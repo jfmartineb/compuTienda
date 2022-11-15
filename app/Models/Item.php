@@ -5,22 +5,32 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Order extends Model
+class Item extends Model
 {
     use HasFactory;
 
     /**
      * PRODUCT ATTRIBUTES
      * $this->attributes['id'] - int - contains the item primary key (id)
-     * $this->attributes['totalPrice'] - int - contains the item total value
+     * $this->attributes['price'] - int - contains the item total value
      * $this->attributes['quantity'] - int - contains the item product quantity
-     * $this->attributes['order'] - Order - contains the order that owns the item
-     * $this->attributes['Product'] - Product - contains the Product that is in the item
+     * $this->attributes['order_id'] - int - contains the referenced order id
+     * $this->attributes['product_id'] - int - contains the referenced product id
      * $this->attributes['created_at'] - DateTime - contains the time the product was created
      * $this->attributes['updated_at'] - DateTime - contains the time the product was last updated
+      * $this->order - Order - contains the associated Order
+      * $this->product - Product - contains the associated Product
      */
-    protected $fillable = ['name', 'price'];
 
+    public static function validate($request)
+    {
+        $request->validate([
+            "price" => "required|numeric|gt:0",
+            "quantity" => "required|numeric|gt:0",
+            "product_id" => "required|exists:products,id", 
+            "order_id" => "required|exists:orders,id"
+        ]);
+}
     public function getId()
     {
         return $this->attributes['id'];
@@ -31,14 +41,14 @@ class Order extends Model
         $this->attributes['id'] = $id;
     }
 
-    public function getTotalPrice()
+    public function getPrice()
     {
-        return $this->attributes['totalPrice'];
+        return $this->attributes['price'];
     }
 
-    public function setTotalPrice($totalPrice)
+    public function setPrice($price)
     {
-        $this->attributes['totalPrice'] = $totalPrice;
+        $this->attributes['price'] = $price;
     }
 
     public function getQuantity()
@@ -49,6 +59,26 @@ class Order extends Model
     public function setQuantity($quantity)
     {
         $this->attributes['quantity'] = $quantity;
+    }
+
+    public function getOrderId()
+    {
+        return $this->attributes['order_id'];
+    }
+    
+    public function setOrderId($orderId)
+    {
+        $this->attributes['order_id'] = $orderId;
+    }
+    
+    public function getProductId()
+    {
+        return $this->attributes['product_id'];
+    }
+    
+    public function setProductId($productId)
+    {
+        $this->attributes['product_id'] = $productId;
     }
 
     public function getCreated_at()

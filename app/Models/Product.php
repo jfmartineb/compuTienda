@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Item;
 
 class Product extends Model
 {
@@ -22,6 +23,7 @@ class Product extends Model
      * $this->attributes['image'] - string - contains the product image
      * $this->comments - Comment[] - contains the associated comments
      * Image
+     * $this->items - Item[] - contains the associated items
      */
     protected $fillable = ['name', 'description', 'category', 'brand', 'group', 'price', 'stock', 'comments', 'image'];
 
@@ -37,6 +39,16 @@ class Product extends Model
             'description' => 'required',
             'image' => 'image',
         ]);
+    }
+
+    public static function sumPricesByQuantities($products, $productsInSession) 
+    { 
+        $total = 0; 
+        foreach ($products as $product) { 
+            $total = $total + ($product->getPrice()*$productsInSession[$product->getId()]); 
+        } 
+        
+        return $total; 
     }
 
 // --------------------------------- ID ---------------------------------------------------

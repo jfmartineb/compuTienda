@@ -8,18 +8,25 @@ use Illuminate\Database\Eloquent\Model;
 class Order extends Model
 {
     use HasFactory;
-
     /**
-     * PRODUCT ATTRIBUTES
-     * $this->attributes['id'] - int - contains the product primary key (id)
-     * $this->attributes['totalPrice'] - int - contains the order toal value
-     * $this->attributes['active'] - boolean - contains if the order is still active
-     * $this->attributes['items'] - Item [] - contains the order items
-     * $this->attributes['user'] - User - get the user that owns the order
-     * $this->attributes['created_at'] - DateTime - contains the time the product was created
-     * $this->attributes['updated_at'] - DateTime - contains the time the product was last updated
-     */
-    protected $fillable = ['name', 'price'];
+    * ORDER ATTRIBUTES
+    * $this->attributes['id'] - int - contains the order primary key (id)
+    * $this->attributes['total'] - string - contains the order name
+    * $this->attributes['user_id'] - int - contains the referenced user id
+    * $this->attributes['active'] - boolean - contains if the order is still active
+    * $this->attributes['created_at'] - timestamp - contains the order creation date
+    * $this->attributes['updated_at'] - timestamp - contains the order update date
+    * $this->user - User - contains the associated User
+    * $this->items - Item[] - contains the associated items
+    */
+
+    public static function validate($request)
+    {
+        $request->validate([
+            "total" => "required|numeric",
+            "user_id" => "required|exists:users,id", 
+        ]);
+    }
 
     public function getId()
     {
@@ -31,14 +38,24 @@ class Order extends Model
         $this->attributes['id'] = $id;
     }
 
-    public function getTotalPrice()
+    public function getTotal()
     {
-        return $this->attributes['totalPrice'];
+        return $this->attributes['total'];
     }
 
-    public function setTotalPrice($totalPrice)
+    public function setTotal($total)
     {
-        $this->attributes['totalPrice'] = $totalPrice;
+        $this->attributes['total'] = $total;
+    }
+
+    public function getUserId()
+    {
+        return $this->attributes['user_id'];
+    }
+
+    public function setUserId($userId)
+    {
+        $this->attributes['user_id'] = $userId;
     }
 
     public function getActive()
@@ -51,12 +68,11 @@ class Order extends Model
         $this->attributes['active'] = $active;
     }
 
-    public function getCreated_at()
+    public function getCreatedAt()
     {
         return $this->attributes['created_at'];
     }
-
-    public function setCreated_at($created_at)
+    public function setCreatedAt($created_at)
     {
         $this->attributes['created_at'] = $created_at;
     }

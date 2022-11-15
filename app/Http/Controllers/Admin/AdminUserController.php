@@ -26,4 +26,10 @@ class AdminUserController extends Controller
 
         return back();
     }
+
+    public function delete($id)
+    {
+        User::destroy($id);
+        return back();
+    }
 }

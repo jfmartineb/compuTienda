@@ -105,7 +105,14 @@
                             <i class="bi-pencil"></i>
                     </td>
                     <td>
-                        <a class="btn btn-primary" href="#">Delete</a>
+                        <form action="{{ route('admin.user.delete', $user->getId())}}" method="POST">
+                            @csrf
+                            @method('DELETE')
+                            <button class="btn btn-danger">
+                                Delete
+                                <i class="bi-trash"></i>
+                            </button>
+                        </form>
                     </td>
                 </tr>
                 @endforeach

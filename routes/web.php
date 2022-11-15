@@ -43,6 +43,7 @@ Route::get('/product/{id}', 'App\Http\Controllers\ProductController@show')->name
 
 Route::get('/admin/users', 'App\Http\Controllers\Admin\AdminUserController@index')->name("admin.user.index");
 Route::post('/admin/users/store', 'App\Http\Controllers\Admin\AdminUserController@store')->name("admin.user.store"); 
+Route::delete('/admin/users/{id}/delete','App\Http\Controllers\Admin\AdminUserController@delete')->name("admin.user.delete"); 
 
 
 

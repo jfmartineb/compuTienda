@@ -13,4 +13,17 @@ class AdminUserController extends Controller
         $viewData["users"] = User::all();
         return view('admin.user.index')->with("viewData", $viewData);
     }
+
+    public function store(Request $request)
+    {
+        $newUser = new User();
+        $newUser->setName($request->input('name'));
+        $newUser->setEmail($request->input('email'));
+        $newUser->setPassword($request->input('password'));
+        $newUser->setRole($request->input('role'));
+        $newUser->setBalance($request->input('balance'));
+        $newUser->save();
+
+        return back();
+    }
 }

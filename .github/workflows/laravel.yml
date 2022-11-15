@@ -23,4 +23,4 @@ jobs:
     - name: Build the Docker image
       run: docker build . --file Dockerfile --tag jfmartineb/computienda:latest
     - name: Execute tests (Unit and Feature tests) via PHPUnit
-      run: ./vendor/bin/phpunit
+      run: php artisan test

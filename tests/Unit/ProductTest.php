@@ -3,8 +3,9 @@
 namespace Tests\Unit;
 
 use PHPUnit\Framework\TestCase;
+use App\Http\Controllers\ProductController;
 
-class ExampleTest extends TestCase
+class ProductTest extends TestCase
 {
     public function testBasicTest()
     {

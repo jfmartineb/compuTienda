@@ -101,7 +101,7 @@
                     <td>{{ $user->getBalance() }}</td>
                     <td>{{ $user->getCreatedAt() }}</td>
                     <td>
-                        <a class="btn btn-primary" href="#">Edit</a>
+                        <a class="btn btn-primary" href="{{route('admin.user.edit', ['id'=> $user->getId()])}}">Edit</a>
                             <i class="bi-pencil"></i>
                     </td>
                     <td>

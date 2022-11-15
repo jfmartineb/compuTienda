@@ -32,4 +32,27 @@ class AdminUserController extends Controller
         User::destroy($id);
         return back();
     }
+
+    public function edit($id)
+    {
+        $viewData = [];
+        $viewData['title'] = 'Admin Page - Edit Users - Online Store';
+        $viewData['user'] = User::findOrFail($id);
+
+        return view('admin.user.edit')->with('viewData', $viewData);
+    }
+
+    public function update(Request $request, $id)
+    {
+        $user = User::findOrFail($id);
+        $user->setName($request->input('name'));
+        $user->setEmail($request->input('email'));
+        $user->setPassword($request->input('password'));
+        $user->setRole($request->input('role'));
+        $user->setBalance($request->input('balance'));
+        $user->save();
+
+        return redirect()->route('admin.user.index');
+    }
+
 }

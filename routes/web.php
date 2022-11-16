@@ -46,6 +46,9 @@ Route::post('/admin/users/store', 'App\Http\Controllers\Admin\AdminUserControlle
 Route::delete('/admin/users/{id}/delete','App\Http\Controllers\Admin\AdminUserController@delete')->name("admin.user.delete");
 Route::get('/admin/users/{id}/edit','App\Http\Controllers\Admin\AdminUserController@edit')->name("admin.user.edit");
 Route::put('/admin/users/{id}/update','App\Http\Controllers\Admin\AdminUserController@update')->name("admin.user.update"); 
+Route::get('/admin/users/pdf', 'App\Http\Controllers\Admin\AdminUserController@pdf')->name("admin.user.pdf");
+Route::get('/admin/users/excel', 'App\Http\Controllers\Admin\AdminUserController@excel')->name("admin.user.excel");
+
 
 
 

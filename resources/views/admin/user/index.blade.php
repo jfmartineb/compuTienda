@@ -3,8 +3,8 @@
 @section('content')
 
 <div class="card mb-4">
-    <div class="card-header">
-        Create Users
+    <div class="card-header text-center">
+        <h2>Create Users</h2>
     </div>
     <div class="card-body">
         @if($errors->any())
@@ -67,15 +67,17 @@
                     </div>
                 </div>
             </div>
-            <button type="submit" class="btn btn-primary">Submit</button>
+            <div class="text-center">
+                <button type="submit" class="btn btn-primary btn-lg btn-block">Submit</button>
+            </div>
         </form>
 
     </div>
 </div>
 
 <div class="card">
-    <div class="card-header">
-        Manage Users
+    <div class="card-header text-center">
+        <h2>Manage Users</h2>
     </div>
     <div class="card-body">
         <table class="table table-bordered table-striped">
@@ -118,6 +120,10 @@
                 @endforeach
             </tbody>
         </table>
+        <div class=" text-center">
+            <a class="btn btn-outline-danger" href="{{route('admin.user.pdf')}}">Make PDF Report</a>
+            <a class="btn btn-outline-success" href="{{route('admin.user.excel')}}">Make Excel Report</a>
+        </div>
     </div>
 </div>
 @endsection

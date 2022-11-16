@@ -2,7 +2,11 @@
 namespace App\Http\Controllers\Admin;
 use App\Models\User;
 use App\Http\Controllers\Controller;
+use App\Interfaces\Exports;
 use Illuminate\Http\Request;
+use PDF;
+use App\Exports\UsersExport;
+use Maatwebsite\Excel\Facades\Excel;
 
 class AdminUserController extends Controller
 {
@@ -53,6 +57,27 @@ class AdminUserController extends Controller
         $user->save();
 
         return redirect()->route('admin.user.index');
+    }
+
+    public function exportDocument(Request $request)
+    {
+        $export =$request->input('export');
+        $exportInterface = app(Export::class, ['export', $export]);
+        $exportInterface->export($request);
+        return back();
+    }
+
+    public function pdf()
+    {
+        $user=User::all();
+        $data = compact('user');
+        $pdf = Pdf::loadView('admin.user.pdf', $data);
+        return $pdf->stream();
+    }
+
+    public function excel()
+    {
+        return Excel::download(new UsersExport, 'users.xlsx');
     }
 
 }

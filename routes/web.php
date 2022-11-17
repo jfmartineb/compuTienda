@@ -41,6 +41,7 @@ Route::get('/my-account/orders', 'App\Http\Controllers\MyAccountController@order
 
 Route::get('/product', 'App\Http\Controllers\ProductController@index')->name('product.index');
 Route::get('/product/best', 'App\Http\Controllers\ProductController@bestReviews')->name('product.best');
+Route::get('/product/lasthours', 'App\Http\Controllers\ProductController@getProductsLastHours')->name('product.lasthours');
 Route::get('/product/{id}', 'App\Http\Controllers\ProductController@show')->name('product.show');
 
 Route::get('/admin/users', 'App\Http\Controllers\Admin\AdminUserController@index')->name('admin.user.index');

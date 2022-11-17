@@ -21,11 +21,7 @@
                 <form method="GET" action="{{ route('product.show', ['id'=> $viewData["review"]->getProduct()->getId()]) }}"> 
                     <div class="row"> 
                         <div class="col-auto"> 
-<<<<<<< HEAD
-                            <button class="btn bg-primary text-white" type="submit">@lang("review.back")<i class="fas fa-pen-fancy"></i></button> 
-=======
                             <button class="btn bg-primary text-white" type="submit">{{ __('review.back') }}<i class="fas fa-pen-fancy"></i></button> 
->>>>>>> eed009b7acd90ed36f95bcfcdb86e7e1f6b72314
                         </div> 
                     </div> 
                 </form>

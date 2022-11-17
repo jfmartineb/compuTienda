@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Product;
+use Carbon\Carbon;
 
 class ProductController extends Controller
 {
@@ -21,8 +22,8 @@ class ProductController extends Controller
         $viewData = [];
         $score = [0, 0, 0, 0, 0];
         $product = Product::findOrFail($id);
-        $viewData['title'] = $product['name'].' - Online Store';
-        $viewData['subtitle'] = $product['name'].' - Product information';
+        $viewData['title'] = $product['name'] . ' - Online Store';
+        $viewData['subtitle'] = $product['name'] . ' - Product information';
         $viewData['product'] = $product;
         $reviews = $product->getReviews();
         $numReviews = 0;
@@ -102,5 +103,16 @@ class ProductController extends Controller
         }
 
         return $total;
+    }
+
+    public static function getProductsLastHours()
+    {
+
+        $viewData = [];
+        $viewData['title'] = 'Products - Online Store';
+        $viewData['subtitle'] = 'List of products added last 12 hours';
+        $viewData['products'] = Product::where("created_at",">", Carbon::now()->subHours(12))->get();
+
+        return view('product.index')->with('viewData', $viewData);
     }
 }

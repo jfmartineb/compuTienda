@@ -15,7 +15,7 @@ class ProductResource extends JsonResource
             'description' => $this->getDescription(),
             'image' => $this->getImage(),
             'comments' => $this->getReviews(),
-            'product_url' => "http://127.0.0.1:8000/api/products/{$this->getId()}"
+            'product_url' => route('api.product.show', $this->getId()),
         ];
     }
 }

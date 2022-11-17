@@ -30,10 +30,14 @@ Route::middleware('admin')->group(function () {
     Route::post('/admin/products/store', 'App\Http\Controllers\Admin\AdminProductController@store')->name("admin.product.store");
     Route::delete('/admin/products/{id}/delete', 'App\Http\Controllers\Admin\AdminProductController@delete')->name("admin.product.delete");
     Route::get('/admin/products/{id}/edit', 'App\Http\Controllers\Admin\AdminProductController@edit')->name("admin.product.edit");
-    Route::put('/admin/products/{id}/update', 'App\Http\Controllers\Admin\AdminProductController@update')->name("admin.product.update");});
-    Route::middleware('auth')->group(function () { Route::get('/cart/purchase', 'App\Http\Controllers\CartController@purchase')->name("cart.purchase");}); 
+    Route::put('/admin/products/{id}/update', 'App\Http\Controllers\Admin\AdminProductController@update')->name("admin.product.update");
+});
 
-    Route::get('/my-account/orders', 'App\Http\Controllers\MyAccountController@orders')->name("myaccount.orders");
+Route::middleware('auth')->group(function () { 
+    Route::get('/cart/purchase', 'App\Http\Controllers\CartController@purchase')->name("cart.purchase");
+}); 
+
+Route::get('/my-account/orders', 'App\Http\Controllers\MyAccountController@orders')->name("myaccount.orders");
 
 Route::get('/product', 'App\Http\Controllers\ProductController@index')->name('product.index');
 Route::get('/product/best', 'App\Http\Controllers\ProductController@bestReviews')->name('product.best');
@@ -63,4 +67,4 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::get('lang/{locale}', 'App\Http\Controllers\LangController@index')->name('language');
+Route::get('/lang/{locale}', 'App\Http\Controllers\LangController@index')->name('language');

@@ -24,6 +24,6 @@ Route::get('/products/{id}', 'App\Http\Controllers\Api\ProductApi@show')->name("
 //External API
 Route::get('/news', 'App\Http\Controllers\Api\ExternalApi@index')->name('api.news');
 
-//Pokemon Store API
-Route::get('/pokemons', 'App\Http\Controllers\Api\PokemonApi@index')->name('api.pokemons');
+//Tiendita Store API
+Route::get('/store', 'App\Http\Controllers\Api\StoreApi@index')->name('api.store');
 

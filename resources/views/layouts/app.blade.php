@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -12,6 +13,7 @@
 
     <title>@yield('title', 'Online Store')</title>
 </head>
+
 <body>
         <!-- navbar -->
     <nav class = "navbar navbar-expand-lg navbar-light bg-white py-4 fixed-top">
@@ -52,6 +54,21 @@
                     </li>
                     <li class = "nav-item px-2 py-2 border-0">
                         <a class = "nav-link text-uppercase text-dark" href = "#popular">popular</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">
+                            @switch(session()->get('locale'))
+                            @case('es')
+                            <img src="{{asset('/flag/co.png')}}" width="25" height="25"> Spanish
+                            @break
+                            @default
+                            <img src="{{asset('/flag/en.png')}}" width="25" height="25"> English
+                            @endswitch
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="lang/en"><img src="{{asset('flag/en.png')}}" width="25" height="25"> English</a></li>
+                            <li><a class="dropdown-item" href="lang/es"><img src="{{asset('flag/co.png')}}" width="25" height="25"> Spanish</a></li>
+                        </ul>
                     </li>
                 </ul>
             </div>
@@ -162,4 +179,5 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"> </script>
 </body>
+
 </html>

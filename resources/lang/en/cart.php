@@ -15,5 +15,5 @@ return [
     //Purchase
     'purchaseCompleted' => 'Purchase Completed',
     'congratulations' => 'Congratulations, purchase completed. Order number is ',
-    
+
 ];

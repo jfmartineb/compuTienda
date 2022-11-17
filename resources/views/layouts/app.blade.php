@@ -18,7 +18,7 @@
         <!-- navbar -->
     <nav class = "navbar navbar-expand-lg navbar-light bg-white py-4 fixed-top">
         <div class = "container">
-            <a class = "navbar-brand d-flex justify-content-between align-items-center order-lg-0" href = "index.html">
+            <a class = "navbar-brand d-flex justify-content-between align-items-center order-lg-0" href = "{{ route('home.index') }}">
                 <img src = "images/shopping-bag-icon.png" alt = "site icon">
                 <span class = "text-uppercase fw-lighter ms-2">{{ __('layouts.attire') }}</span>
             </a>
@@ -123,7 +123,7 @@
                             <i class = "fas fa-map-marked-alt"></i>
                         </span>
                         <span class = "fw-light">
-                            Albert Street, New York, AS 756, United States of America
+                            Universidad EAFIT, Medellín
                         </span>
                     </div>
                     <div class = "d-flex justify-content-start align-items-start my-2 text-muted">
@@ -131,7 +131,7 @@
                             <i class = "fas fa-envelope"></i>
                         </span>
                         <span class = "fw-light">
-                            attire.support@gmail.com
+                            Tópicos Especiales en Ingeniería de Software
                         </span>
                     </div>
                     <div class = "d-flex justify-content-start align-items-start my-2 text-muted">
@@ -139,7 +139,7 @@
                             <i class = "fas fa-phone-alt"></i>
                         </span>
                         <span class = "fw-light">
-                            +9786 6776 236
+                            
                         </span>
                     </div>
                 </div>

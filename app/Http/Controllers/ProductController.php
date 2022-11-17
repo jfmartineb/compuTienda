@@ -27,7 +27,7 @@ class ProductController extends Controller
         $reviews = $product->getReviews();
         $numReviews = 0;
         $medScore = 0;
-        if (count($reviews) > 0){
+        if (count($reviews) > 0) {
             foreach ($reviews as $review) {
                 $numReviews += 1;
                 $medScore += $review->getScore();
@@ -36,7 +36,7 @@ class ProductController extends Controller
             $numReviews = 1;
             $medScore = 0;
         }
-        
+
         $avg = $medScore / $numReviews;
         for ($i = 0; $i < 5; $i++) {
             if ($avg > 0) {
@@ -61,12 +61,12 @@ class ProductController extends Controller
         $best = [];
         $passProducts = [];
 
-        if (count($products) > 0){
+        if (count($products) > 0) {
             foreach ($products as $product) {
                 $numReviews = 0;
                 $medScore = 0;
                 $reviews = $product->getReviews();
-                if (count($reviews) > 0){
+                if (count($reviews) > 0) {
                     foreach ($reviews as $review) {
                         $numReviews += 1;
                         $medScore += $review->getScore();
@@ -75,26 +75,25 @@ class ProductController extends Controller
                     $numReviews = 1;
                     $medScore = 0;
                 }
-                
+
                 $avg = $medScore / $numReviews;
-                if ($avg > 3){
+                if ($avg > 3) {
                     $organized[$product->getID()] = $avg;
                     $best[$product->getID()] = $product;
                 }
             }
             arsort($organized);
 
-            foreach ($organized as $key => $val){
+            foreach ($organized as $key => $val) {
                 array_push($passProducts, $best[$key]);
             }
         }
 
-
         $viewData['products'] = $passProducts;
 
         return view('product.index')->with('viewData', $viewData);
-    }   
-    
+    }
+
     public static function sumPricesByQuantities($products, $productsInSession)
     {
         $total = 0;

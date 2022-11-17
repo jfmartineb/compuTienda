@@ -1,21 +1,23 @@
 <?php
+
 namespace App\Http\Controllers\Admin;
-use App\Models\User;
-use App\Http\Controllers\Controller;
-use App\Interfaces\Exports;
-use Illuminate\Http\Request;
-use PDF;
+
 use App\Exports\UsersExport;
+use App\Http\Controllers\Controller;
+use App\Models\User;
+use Illuminate\Http\Request;
 use Maatwebsite\Excel\Facades\Excel;
+use PDF;
 
 class AdminUserController extends Controller
 {
     public function index()
     {
         $viewData = [];
-        $viewData["title"] = "Admin Page - Users - Online Store";
-        $viewData["users"] = User::all();
-        return view('admin.user.index')->with("viewData", $viewData);
+        $viewData['title'] = 'Admin Page - Users - Online Store';
+        $viewData['users'] = User::all();
+
+        return view('admin.user.index')->with('viewData', $viewData);
     }
 
     public function store(Request $request)
@@ -34,6 +36,7 @@ class AdminUserController extends Controller
     public function delete($id)
     {
         User::destroy($id);
+
         return back();
     }
 
@@ -61,17 +64,19 @@ class AdminUserController extends Controller
 
     public function exportDocument(Request $request)
     {
-        $export =$request->input('export');
+        $export = $request->input('export');
         $exportInterface = app(Export::class, ['export', $export]);
         $exportInterface->export($request);
+
         return back();
     }
 
     public function pdf()
     {
-        $user=User::all();
+        $user = User::all();
         $data = compact('user');
         $pdf = Pdf::loadView('admin.user.pdf', $data);
+
         return $pdf->stream();
     }
 
@@ -79,5 +84,4 @@ class AdminUserController extends Controller
     {
         return Excel::download(new UsersExport, 'users.xlsx');
     }
-
 }

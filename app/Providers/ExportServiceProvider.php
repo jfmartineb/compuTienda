@@ -1,17 +1,15 @@
-<?php 
+<?php
 
 namespace App\Providers;
 
-use Illuminate\Support\ServiceProvider;
 use App\Interfaces\Export;
-use App\Util\ExportExcel;
-use App\Util\ExportPdf;
+use Illuminate\Support\ServiceProvider;
 
 class ExportServiceProvider extends ServiceProvider
 {
     public function register()
     {
-        $this->app->bind(Export::class, function ($app, $params){
+        $this->app->bind(Export::class, function ($app, $params) {
             return new ImageLocalStorage();
         });
     }

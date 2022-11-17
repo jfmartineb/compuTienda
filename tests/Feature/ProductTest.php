@@ -2,10 +2,8 @@
 
 namespace Tests\Feature;
 
-use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
-use Tests\TestCase;
 use App\Models\Product;
+use Tests\TestCase;
 
 class ProductTest extends TestCase
 {
@@ -14,7 +12,6 @@ class ProductTest extends TestCase
      *
      * @return void
      */
-
     public function testMainPage()
     {
         $response = $this->get('/product');
@@ -27,5 +24,4 @@ class ProductTest extends TestCase
         $numProducts = Product::count();
         $this->assertTrue($numProducts >= 1);
     }
-
 }

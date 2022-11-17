@@ -10,5 +10,5 @@ return [
     'price' => 'Precio',
     'quantity' => 'Cantidad',
     'error' => 'Parece ser que no has comprado nada en nuestra tienda =(',
-    
+
 ];

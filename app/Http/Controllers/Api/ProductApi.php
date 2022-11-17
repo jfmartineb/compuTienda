@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers\Api;
 
-use App\Http\Resources\ProductResource;
 use App\Http\Controllers\Controller;
+use App\Http\Resources\ProductResource;
 use App\Models\Product;
 
 class ProductApi extends Controller
@@ -17,4 +17,4 @@ class ProductApi extends Controller
     {
         return new ProductResource(Product::findOrFail($id));
     }
-} 
+}

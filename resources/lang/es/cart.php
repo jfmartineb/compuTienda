@@ -11,7 +11,7 @@ return [
     'total' => 'Total a pagar:',
     'purchase' => 'Comprar',
     'removeAll' => 'Eliminar todos los productos del carrito',
-    
+
     //Purchase
     'purchaseCompleted' => 'Compra completada',
     'congratulations' => 'Felicitaciones, compra completada. El número de pedido es',

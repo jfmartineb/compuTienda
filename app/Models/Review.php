@@ -94,6 +94,7 @@ class Review extends Model
     {
         $this->attributes['description'] = $description;
     }
+
 // --------------------------------------------------------------------------
     public function product()
     {

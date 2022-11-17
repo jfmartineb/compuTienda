@@ -29,5 +29,5 @@ return [
     'blogs' => 'Blogs',
     'contact' => 'Contact Us',
     'follow' => 'Follow Us',
-    
+
 ];

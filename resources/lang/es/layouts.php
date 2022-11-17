@@ -27,5 +27,5 @@ return [
     'blogs' => 'Blogs',
     'contact' => 'Contacta con nosotros',
     'follow' => 'Síguenos',
-    
+
 ];

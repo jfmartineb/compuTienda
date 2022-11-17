@@ -4,7 +4,6 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use App\Models\Item;
 
 class Product extends Model
 {
@@ -41,14 +40,14 @@ class Product extends Model
         ]);
     }
 
-    public static function sumPricesByQuantities($products, $productsInSession) 
-    { 
-        $total = 0; 
-        foreach ($products as $product) { 
-            $total = $total + ($product->getPrice()*$productsInSession[$product->getId()]); 
-        } 
-        
-        return $total; 
+    public static function sumPricesByQuantities($products, $productsInSession)
+    {
+        $total = 0;
+        foreach ($products as $product) {
+            $total = $total + ($product->getPrice() * $productsInSession[$product->getId()]);
+        }
+
+        return $total;
     }
 
 // --------------------------------- ID ---------------------------------------------------

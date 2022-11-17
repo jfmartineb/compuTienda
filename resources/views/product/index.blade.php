@@ -14,7 +14,7 @@
                                     <p class = "text-capitalize my-1">{{ $product->getName() }}</p>
                                     <span class = "fw-bold">$ {{ $product->getPrice() }}</span>
                                     <br>
-                                    <a href="{{ route('product.show', ['id'=> $product->getId()]) }}" class = "btn mt-3 text-uppercase">{{ product.indexView }}</a>
+                                    <a href="{{ route('product.show', ['id'=> $product->getId()]) }}" class = "btn mt-3 text-uppercase">@lang("product.indexView")</a>
                                 </div>
                             </div>
                         @endforeach

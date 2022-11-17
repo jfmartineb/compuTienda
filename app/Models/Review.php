@@ -16,7 +16,6 @@ class Review extends Model
      * $this->attributes['title'] - string - contains the comment title
      * $this->attributes['score'] - int - contains the comment score
      * $this->attributes['description'] - string - contains the comment description
-     * $this->attributes['createAt'] - DateTime - contains the comment create date
      * $this->attributes['acceptedReviews'] - bool - contains the comment acception
      * $this->user - User - contains the associated User
      * $this->product - Product - contains the associated Product
@@ -95,27 +94,6 @@ class Review extends Model
     {
         $this->attributes['description'] = $description;
     }
-
-    public function getCreateAt()
-    {
-        return $this->attributes['createAt'];
-    }
-
-    public function setCreateAt($createAt)
-    {
-        $this->attributes['createAt'] = $createAt;
-    }
-
-    public function getAcceptedReviews()
-    {
-        return $this->attributes['acceptedReviews'];
-    }
-
-    public function setAcceptedReviews($acceptedReviews)
-    {
-        $this->attributes['acceptedReviews'] = $acceptedReviews;
-    }
-
 // --------------------------------------------------------------------------
     public function product()
     {

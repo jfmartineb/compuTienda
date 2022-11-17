@@ -17,18 +17,18 @@ class ReviewController extends Controller
         $viewData['productName'] = $product->getName();
         $viewData['productId'] = $productId;
 
-        return view('review.index')->with('viewData', $viewData);
+        return view('review.add')->with('viewData', $viewData);
     }
 
     public function add(Request $request)
     {
-        Review::validation($request);
         $review = new Review();
+        Review::validation($request);
         $review->setTitle($request->input('title'));
         $review->setScore($request->input('score'));
         $review->setDescription($request->input('description'));
-        $review->setProduct($request->input('productId'));
-        $review->setUser(auth()->id());
+        $review->setProductId($request->input('productId'));
+        $review->setUserId(auth()->id());
         $review->save();
 
         return redirect()->route('product.show', $request->input('productId'));

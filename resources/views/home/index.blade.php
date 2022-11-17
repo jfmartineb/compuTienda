@@ -6,14 +6,14 @@
     <header id = "header" class = "vh-100 carousel slide" data-bs-ride = "carousel" style = "padding-top: 104px;">
         <div class = "container h-100 d-flex align-items-center carousel-inner">
             <div class = "text-center carousel-item active">
-                <h2 class = "text-capitalize text-white">best collection</h2>
-                <h1 class = "text-uppercase py-2 fw-bold text-white">new arrivals</h1>
-                <a href = "#" class = "btn mt-3 text-uppercase">shop now</a>
+                <h2 class = "text-capitalize text-white">{{ _('home.best') }}</h2>
+                <h1 class = "text-uppercase py-2 fw-bold text-white">{{ _('home.new') }}</h1>
+                <a href = "#" class = "btn mt-3 text-uppercase">{{ __('home.now') }}</a>
             </div>
             <div class = "text-center carousel-item">
-                <h2 class = "text-capitalize text-white">best price & offer</h2>
-                <h1 class = "text-uppercase py-2 fw-bold text-white">new season</h1>
-                <a href = "#" class = "btn mt-3 text-uppercase">buy now</a>
+                <h2 class = "text-capitalize text-white">{{ __('home.offer') }}</h2>
+                <h1 class = "text-uppercase py-2 fw-bold text-white">{{ __('home.season') }}</h1>
+                <a href = "#" class = "btn mt-3 text-uppercase">{{ __('home.now') }}</a>
             </div>
         </div>
 
@@ -30,15 +30,15 @@
     <section id = "collection" class = "py-5">
         <div class = "container">
             <div class = "title text-center">
-                <h2 class = "position-relative d-inline-block">New Collection</h2>
+                <h2 class = "position-relative d-inline-block">{{ __('home.collection') }}</h2>
             </div>
 
             <div class = "row g-0">
                 <div class = "d-flex flex-wrap justify-content-center mt-5 filter-button-group">
-                    <a href="{{ route('product.index') }}" class = "btn m-2 text-dark">All products</a>
-                    <button type = "button" class = "btn m-2 text-dark" data-filter = ".best">Best Sellers</button>
-                    <button type = "button" class = "btn m-2 text-dark" data-filter = ".feat">Featured</button>
-                    <button type = "button" class = "btn m-2 text-dark" data-filter = ".new">New Arrival</button>
+                    <a href="{{ route('product.index') }}" class = "btn m-2 text-dark">{{ __('home.all') }}</a>
+                    <button type = "button" class = "btn m-2 text-dark" data-filter = ".best">{{ __('home.sellers') }}</button>
+                    <button type = "button" class = "btn m-2 text-dark" data-filter = ".feat">{{ __('home.featured') }}</button>
+                    <button type = "button" class = "btn m-2 text-dark" data-filter = ".new">{{ __('home.season') }}</button>
                 </div>
             </div>
         </div>

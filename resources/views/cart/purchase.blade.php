@@ -2,14 +2,15 @@
 @section('title', $viewData["title"])
 @section('subtitle', $viewData["subtitle"])
 @section('content')
-<div class="card">
-    <div class="card-header">
-        Purchase Completed
-    </div>
-    <div class="card-body">
-        <div class="alert alert-success" role="alert">
-            Congratulations, purchase completed. Order number is <b>#{{ $viewData["order"]->getId()
-                }}</b>
+<div class="container py-5" style="margin-top: 104px;">
+    <div class="card">
+        <div class="card-header">
+            {{ __('cart.purchaseCompleted') }}
+        </div>
+        <div class="card-body">
+            <div class="alert alert-success" role="alert">
+                {{ __('cart.congratulations') }} <b>#{{ $viewData["order"]->getId() }}</b>
+            </div>
         </div>
     </div>
 </div>

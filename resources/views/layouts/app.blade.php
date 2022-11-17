@@ -20,18 +20,17 @@
         <div class = "container">
             <a class = "navbar-brand d-flex justify-content-between align-items-center order-lg-0" href = "index.html">
                 <img src = "images/shopping-bag-icon.png" alt = "site icon">
-                <span class = "text-uppercase fw-lighter ms-2">Attire</span>
+                <span class = "text-uppercase fw-lighter ms-2">{{ __('layouts.attire') }}</span>
             </a>
-
             <div class="order-lg-2 nav-btns text-center">
                 <div class="vr bg-white mx-2 d-none d-lg-block"></div>
                 @guest
-                <a class="nav-link active" href="{{ route('login') }}">Login</a>
-                <a class="nav-link active" href="{{ route('register') }}">Register</a>
+                <a class="nav-link active" href="{{ route('login') }}">{{__('layouts.login')}}</a>
+                <a class="nav-link active" href="{{ route('register') }}">{{__('layouts.register')}}</a>
                 @else
-                <a class="nav-link active" href="{{ route('myaccount.orders') }}">My Orders</a>
+                <a class="nav-link active" href="{{ route('myaccount.orders') }}">{{__('layouts.myOrders')}}</a>
                 <form id="logout" action="{{ route('logout') }}" method="POST">
-                    <a role="button" class="nav-link active" onclick="document.getElementById('logout').submit();">Logout</a>
+                    <a role="button" class="nav-link active" onclick="document.getElementById('logout').submit();">{{__('layouts.logout')}}</a>
                     @csrf
                 </form>
                 @endguest
@@ -44,30 +43,30 @@
             <div class = "collapse navbar-collapse order-lg-1" id = "navMenu">
                 <ul class = "navbar-nav mx-auto text-center">
                     <li class = "nav-item px-2 py-2">
-                        <a class = "nav-link text-uppercase text-dark" href="{{ route('home.index') }}">home</a>
+                        <a class = "nav-link text-uppercase text-dark" href="{{ route('home.index') }}">{{__('layouts.home')}}</a>
                     </li>
                     <li class = "nav-item px-2 py-2">
-                        <a class = "nav-link text-uppercase text-dark" href="{{ route('home.about') }}">About</a>
+                        <a class = "nav-link text-uppercase text-dark" href="{{ route('home.about') }}">{{__('layouts.about')}}</a>
                     </li>
                     <li class = "nav-item px-2 py-2">
-                        <a class = "nav-link text-uppercase text-dark" href = "{{ route('cart.index') }}">Cart</a>
+                        <a class = "nav-link text-uppercase text-dark" href = "{{ route('cart.index') }}">{{__('layouts.cart')}}</a>
                     </li>
                     <li class = "nav-item px-2 py-2 border-0">
-                        <a class = "nav-link text-uppercase text-dark" href = "#popular">popular</a>
+                        <a class = "nav-link text-uppercase text-dark" href = "#popular">{{__('layouts.popular')}}</a>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">
                             @switch(session()->get('locale'))
                             @case('es')
-                            <img src="{{asset('/flag/co.png')}}" width="25" height="25"> Spanish
+                            <img src="{{asset('/flag/co.png')}}" width="25" height="25"> {{__('layouts.spanish')}}
                             @break
                             @default
-                            <img src="{{asset('/flag/en.png')}}" width="25" height="25"> English
+                            <img src="{{asset('/flag/en.png')}}" width="25" height="25"> {{__('layouts.english')}}
                             @endswitch
                         </a>
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="lang/en"><img src="{{asset('flag/en.png')}}" width="25" height="25"> English</a></li>
-                            <li><a class="dropdown-item" href="lang/es"><img src="{{asset('flag/co.png')}}" width="25" height="25"> Spanish</a></li>
+                            <li><a class="dropdown-item" href="{{ route('language', ['locale'=> 'en']) }}"><img src="{{asset('flag/en.png')}}" width="25" height="25"> {{__('layouts.english')}}</a></li>
+                            <li><a class="dropdown-item" href="{{ route('language', ['locale'=> 'es']) }}"><img src="{{asset('flag/co.png')}}" width="25" height="25"> {{__('layouts.spanish')}}</a></li>
                         </ul>
                     </li>
                 </ul>
@@ -87,38 +86,38 @@
         <div class = "container">
             <div class = "row text-white g-4">
                 <div class = "col-md-6 col-lg-3">
-                    <a class = "text-uppercase text-decoration-none brand text-white" href = "index.html">Attire</a>
-                    <p class = "text-white text-muted mt-3">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum mollitia quisquam veniam odit cupiditate, ullam aut voluptas velit dolor ipsam?</p>
+                    <a class = "text-uppercase text-decoration-none brand text-white" href = "index.html">{{__('layouts.attire')}}</a>
+                    <p class = "text-white text-muted mt-3">{{__('layouts.loremIpsum')}}</p>
                 </div>
 
                 <div class = "col-md-6 col-lg-3">
-                    <h5 class = "fw-light">Links</h5>
+                    <h5 class = "fw-light">{{__('layouts.links')}}</h5>
                     <ul class = "list-unstyled">
                         <li class = "my-3">
                             <a href = "#" class = "text-white text-decoration-none text-muted">
-                                <i class = "fas fa-chevron-right me-1"></i> Home
+                                <i class = "fas fa-chevron-right me-1"></i> {{__('layouts.home')}}
                             </a>
                         </li>
                         <li class = "my-3">
                             <a href = "#" class = "text-white text-decoration-none text-muted">
-                                <i class = "fas fa-chevron-right me-1"></i> Collection
+                                <i class = "fas fa-chevron-right me-1"></i> {{__('layouts.collections')}}
                             </a>
                         </li>
                         <li class = "my-3">
                             <a href = "#" class = "text-white text-decoration-none text-muted">
-                                <i class = "fas fa-chevron-right me-1"></i> Blogs
+                                <i class = "fas fa-chevron-right me-1"></i> {{__('layouts.blogs')}}
                             </a>
                         </li>
                         <li class = "my-3">
                             <a href = "#" class = "text-white text-decoration-none text-muted">
-                                <i class = "fas fa-chevron-right me-1"></i> About Us
+                                <i class = "fas fa-chevron-right me-1"></i> {{__('layouts.about')}}
                             </a>
                         </li>
                     </ul>
                 </div>
 
                 <div class = "col-md-6 col-lg-3">
-                    <h5 class = "fw-light mb-3">Contact Us</h5>
+                    <h5 class = "fw-light mb-3">{{__('layouts.contact')}}</h5>
                     <div class = "d-flex justify-content-start align-items-start my-2 text-muted">
                         <span class = "me-3">
                             <i class = "fas fa-map-marked-alt"></i>
@@ -146,7 +145,7 @@
                 </div>
 
                 <div class = "col-md-6 col-lg-3">
-                    <h5 class = "fw-light mb-3">Follow Us</h5>
+                    <h5 class = "fw-light mb-3">{{__('layouts.follow')}}</h5>
                     <div>
                         <ul class = "list-unstyled d-flex">
                             <li>

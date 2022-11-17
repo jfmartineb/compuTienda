@@ -50,6 +50,11 @@ class ProductController extends Controller
 
         return view('product.show')->with('viewData', $viewData);
     }
+
+    public function bestReviews()
+    {
+        
+    }
     
     public static function sumPricesByQuantities($products, $productsInSession)
     {

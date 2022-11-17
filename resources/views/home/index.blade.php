@@ -6,8 +6,8 @@
     <header id = "header" class = "vh-100 carousel slide" data-bs-ride = "carousel" style = "padding-top: 104px;">
         <div class = "container h-100 d-flex align-items-center carousel-inner">
             <div class = "text-center carousel-item active">
-                <h2 class = "text-capitalize text-white">{{ _('home.best') }}</h2>
-                <h1 class = "text-uppercase py-2 fw-bold text-white">{{ _('home.new') }}</h1>
+                <h2 class = "text-capitalize text-white">{{ __('home.best') }}</h2>
+                <h1 class = "text-uppercase py-2 fw-bold text-white">{{ __('home.new') }}</h1>
                 <a href = "#" class = "btn mt-3 text-uppercase">{{ __('home.now') }}</a>
             </div>
             <div class = "text-center carousel-item">
